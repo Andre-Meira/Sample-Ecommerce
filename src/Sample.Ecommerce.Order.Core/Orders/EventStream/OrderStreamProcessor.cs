@@ -1,25 +1,26 @@
 ﻿using Sample.Ecommerce.Core.Domain.Stream;
 
-namespace Sample.Ecommerce.Order.Core.Orders;
+namespace Sample.Ecommerce.Order.Core.Orders.EventStream;
 
 public interface IOrderProcessorEvents
-: IProcessorEventStream<Order, IOrderProcessStream> { }
+: IProcessorEventStream<Order, IOrderStream>
+{ }
 
-public sealed class OrderProcessorEvents : IOrderProcessorEvents
+public sealed class OrderStreamProcessor : IOrderProcessorEvents
 {
     private readonly IOrderStreamRespositore _streamRespositore;
 
-    public OrderProcessorEvents(IOrderStreamRespositore streamRespositore)
+    public OrderStreamProcessor(IOrderStreamRespositore streamRespositore)
     {
         _streamRespositore = streamRespositore;
     }
 
-    public IEnumerable<IOrderProcessStream> GetEvents(Guid Id)
+    public IEnumerable<IOrderStream> GetEvents(Guid Id)
     {
         return _streamRespositore.GetEvents(Id);
     }
 
-    public async Task Include(IOrderProcessStream @event)
+    public async Task Include(IOrderStream @event)
     {
         Order stream = await Process(@event.IdCorrelation);
         stream.When(@event);
@@ -29,10 +30,10 @@ public sealed class OrderProcessorEvents : IOrderProcessorEvents
 
     public Task<Order> Process(Guid Id)
     {
-        IEnumerable<IOrderProcessStream> events = GetEvents(Id);
+        IEnumerable<IOrderStream> events = GetEvents(Id);
         Order paymentEvent = new Order();
 
-        foreach (IOrderProcessStream @event in events) paymentEvent.When(@event);
+        foreach (IOrderStream @event in events) paymentEvent.When(@event);
 
         return Task.FromResult(paymentEvent);
     }
