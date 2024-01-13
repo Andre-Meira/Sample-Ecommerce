@@ -1,19 +1,15 @@
 ﻿namespace Sample.Ecommerce.Core.Domain.Entity;
 
-internal class Entity : INotificationDomain
+public class Entity : IEventNotificationDomain
 {
-    private readonly List<Notification> _notifications = new List<Notification>();
-
+    
     private Guid _id = Guid.Empty;
+
+    private readonly List<INotificationDomain> _notificationDomains = new List<INotificationDomain>();
 
     public bool IsDeleted { get; private set; }
 
     public Guid Id { get; private set; }
-
-    public void AddNotification(Notification notification)
-    {
-        throw new NotImplementedException();
-    }
 
     public virtual void Create()
     {
@@ -26,11 +22,20 @@ internal class Entity : INotificationDomain
         Id = _id;
     }
 
-    public void Remove() => IsDeleted = true;
-
-    public virtual void Validate()
+    public void ClearEvents()
     {
-        if (_notifications.Any() == true)
-            throw new DomainException(_notifications);
+        _notificationDomains.Clear();
     }
+
+    public IReadOnlyCollection<INotificationDomain> GetEvents()
+    {
+        return _notificationDomains;
+    }
+
+    public void RaiseDomainEvent(INotificationDomain @event)
+    {
+        _notificationDomains.Add(@event);
+    }
+
+    protected virtual void Validate() { }
 }

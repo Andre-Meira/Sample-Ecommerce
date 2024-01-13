@@ -1,8 +1,15 @@
 ﻿namespace Sample.Ecommerce.Core.Domain.Entity;
 
-public interface INotificationDomain
+public interface IEventNotificationDomain
 {
-    public void AddNotification(Notification notification);
+    void RaiseDomainEvent(INotificationDomain @event);
+
+    void ClearEvents();
+
+    IReadOnlyCollection<INotificationDomain> GetEvents();
 }
 
-public sealed record Notification(string key, string value);
+public interface INotificationDomain 
+{
+    public Guid Id { get; }
+}

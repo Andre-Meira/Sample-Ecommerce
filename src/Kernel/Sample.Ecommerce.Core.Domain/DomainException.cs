@@ -4,7 +4,7 @@ namespace Sample.Ecommerce.Core.Domain;
 
 public class DomainException : Exception
 {
-    public List<Notification>? Messages { get; }
+    public List<string>? Messages { get; }
 
     public DomainException() { }
 
@@ -13,5 +13,5 @@ public class DomainException : Exception
     public DomainException(string message, Exception innerException)
         : base(message, innerException) { }
 
-    public DomainException(List<Notification> messages) : base() => Messages = messages;
+    public DomainException(List<string> messages) : base() => Messages = messages;
 }
