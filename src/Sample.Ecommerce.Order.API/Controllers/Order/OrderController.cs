@@ -16,8 +16,6 @@ public class OrderController : ControllerBase
     {
         Guid orderId = Guid.NewGuid();
 
-
-
         return Task.FromResult(new OrderResponse(orderId, "Ordem criado e em processo."));
     }
 }

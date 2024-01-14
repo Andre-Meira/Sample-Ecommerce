@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Stocks\" />
+    <Compile Remove="Inventorys\**" />
+    <EmbeddedResource Remove="Inventorys\**" />
+    <None Remove="Inventorys\**" />
   </ItemGroup>
 
   <ItemGroup>

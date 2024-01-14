@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Kernel\Sample.Ecommerce.Core.Domain\Sample.Ecommerce.Core.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

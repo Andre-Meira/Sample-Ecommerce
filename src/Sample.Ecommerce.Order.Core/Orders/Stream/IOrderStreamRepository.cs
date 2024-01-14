@@ -1,8 +1,8 @@
 ﻿namespace Sample.Ecommerce.Order.Core.Orders.EventStream;
 
-public interface IOrderStreamRespositore
+public interface IOrderStreamRepository
 {
-    public IEnumerable<IOrderStream> GetEvents(Guid idPayment);
+    public IEnumerable<IOrderStream> GetEvents(Guid IdOrder);
 
     public Task IncressEvent(IOrderStream @event);
 }

@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Inventory\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sample.Ecommerce.Order.Core\Sample.Ecommerce.Order.Core.csproj" />
+  </ItemGroup>
+
 </Project>

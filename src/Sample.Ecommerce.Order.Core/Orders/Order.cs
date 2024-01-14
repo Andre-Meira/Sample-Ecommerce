@@ -1,6 +1,7 @@
 ﻿using Sample.Ecommerce.Core.Domain.ValueObjects;
 using Sample.Ecommerce.Core.Domain.Stream;
 using Sample.Ecommerce.Order.Core.Orders.EventStream;
+using Sample.Ecommerce.Order.Core.Products;
 
 namespace Sample.Ecommerce.Order.Core.Orders;
 
@@ -15,6 +16,7 @@ public class Order : IAggregateStream<IOrderStream>
 
     public Address DeliveryAddress { get; set; } = null!;
     public BankAccount BankAccount { get; set; } = null!;
+    public Product Product { get; set; } = null!;
 
     public decimal Amount { get; set; }  
     public decimal Value { get ; set; } 

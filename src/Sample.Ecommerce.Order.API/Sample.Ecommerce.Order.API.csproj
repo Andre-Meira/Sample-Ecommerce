@@ -8,11 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <Compile Remove="Controllers\Inventorys\**" />
+    <Content Remove="Controllers\Inventorys\**" />
+    <EmbeddedResource Remove="Controllers\Inventorys\**" />
+    <None Remove="Controllers\Inventorys\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Stocks\" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>  
 
 </Project>

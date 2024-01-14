@@ -7,13 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Stocks\" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Constracts\Sample.Ecommerce.Domain.Contracts\Sample.Ecommerce.Domain.Contracts.csproj" />
     <ProjectReference Include="..\Kernel\Sample.Ecommerce.Core.Domain\Sample.Ecommerce.Core.Domain.csproj" />
-    <ProjectReference Include="..\Sample.Ecommerce.Order.Infra\Sample.Ecommerce.Order.Infra.csproj" />
   </ItemGroup>
 
 </Project>

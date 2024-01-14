@@ -6,18 +6,18 @@ public interface IOrderProcessorEvents
 : IProcessorEventStream<Order, IOrderStream>
 { }
 
-public sealed class OrderStreamProcessor : IOrderProcessorEvents
+public sealed class InventorystreamProcessor : IOrderProcessorEvents
 {
-    private readonly IOrderStreamRespositore _streamRespositore;
+    private readonly IOrderStreamRepository _streamRepository;
 
-    public OrderStreamProcessor(IOrderStreamRespositore streamRespositore)
+    public InventorystreamProcessor(IOrderStreamRepository streamRespositore)
     {
-        _streamRespositore = streamRespositore;
+        _streamRepository = streamRespositore;
     }
 
     public IEnumerable<IOrderStream> GetEvents(Guid Id)
     {
-        return _streamRespositore.GetEvents(Id);
+        return _streamRepository.GetEvents(Id);
     }
 
     public async Task Include(IOrderStream @event)
@@ -25,7 +25,7 @@ public sealed class OrderStreamProcessor : IOrderProcessorEvents
         Order stream = await Process(@event.IdCorrelation);
         stream.When(@event);
 
-        await _streamRespositore.IncressEvent(@event).ConfigureAwait(false);
+        await _streamRepository.IncressEvent(@event).ConfigureAwait(false);
     }
 
     public Task<Order> Process(Guid Id)

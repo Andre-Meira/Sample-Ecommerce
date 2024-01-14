@@ -2,7 +2,7 @@
 
 public interface IProcessorEventStream<ProcessStream, EventStream>    
     where ProcessStream : IAggregateStream<EventStream>
-    where EventStream : IEventStream
+    where EventStream : IEventData
 {
     Task Include(EventStream @event);
 
