@@ -1,8 +1,10 @@
-﻿namespace Sample.Ecommerce.Order.Core.Orders.Structs;
+﻿using Sample.Ecommerce.Domain.Contracts.Orders;
+
+namespace Sample.Ecommerce.Order.Core.Orders.Structs;
 
 internal sealed class OrderProcessor : IOrderStructProcessor
-{
-    public void Process(Order order)
+{    
+    public Task Process(SubmitOrder order)
     {
         throw new NotImplementedException();
     }

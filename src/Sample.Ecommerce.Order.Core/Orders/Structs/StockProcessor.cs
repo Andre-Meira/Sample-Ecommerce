@@ -1,16 +1,29 @@
-﻿namespace Sample.Ecommerce.Order.Core.Orders.Structs;
+﻿using Sample.Ecommerce.Core.Domain;
+using Sample.Ecommerce.Domain.Contracts.Orders;
+using Sample.Ecommerce.Order.Core.Inventorys;
+using Sample.Ecommerce.Order.Core.Inventorys.EventStream;
+
+namespace Sample.Ecommerce.Order.Core.Orders.Structs;
 
 internal sealed class StockProcessor : OrderStructProcessor
 {
-    private readonly IOrderStructProcessor _processor;    
+    private readonly IOrderStructProcessor _processor;
+    private readonly IStockProcessorEvents _stock;        
 
-    public StockProcessor(IOrderStructProcessor processor) : base(processor)
+    public StockProcessor(IOrderStructProcessor processor, 
+        IStockProcessorEvents stock) : base(processor)
     {
         _processor = processor;
+        _stock = stock;
     }
 
-    public override void Process(Order order)
+    public override async Task Process(SubmitOrder order)
     {
-        _processor.Process(order);
+        Inventory inventory = await _stock.GetByIdProduct(order.IdProduct);
+
+        if (inventory.Amount < order.Amount)
+            throw new DomainException("Não existe essa quantidade em estoque.");
+
+        await _processor.Process(order).ConfigureAwait(false);
     }
 }

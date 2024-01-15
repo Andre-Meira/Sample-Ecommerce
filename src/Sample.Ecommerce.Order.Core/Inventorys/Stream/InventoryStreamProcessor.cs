@@ -4,7 +4,9 @@ namespace Sample.Ecommerce.Order.Core.Inventorys.EventStream;
 
 public interface IStockProcessorEvents
 : IProcessorEventStream<Inventory, IInventoryStream>
-{ }
+{
+    public Task<Inventory> GetByIdProduct(Guid Id);
+}
 
 public sealed class InventoryStreamProcessor : IStockProcessorEvents
 {
@@ -13,6 +15,16 @@ public sealed class InventoryStreamProcessor : IStockProcessorEvents
     public InventoryStreamProcessor(IInventoryStreamRepository streamRespositore)
     {
         _streamRepositore = streamRespositore;
+    }
+
+    public Task<Inventory> GetByIdProduct(Guid Id)
+    {
+        IEnumerable<IInventoryStream> events = _streamRepositore.GetEventsByFilter(e => e.IdProduct = Id);
+        Inventory paymentEvent = new Inventory();
+
+        foreach (IInventoryStream @event in events) paymentEvent.When(@event);
+
+        return Task.FromResult(paymentEvent);
     }
 
     public IEnumerable<IInventoryStream> GetEvents(Guid Id)

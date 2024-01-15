@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Kernel\Sample.Ecommerce.Core.Domain\Sample.Ecommerce.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Products\" />
+  </ItemGroup>
+
 </Project>

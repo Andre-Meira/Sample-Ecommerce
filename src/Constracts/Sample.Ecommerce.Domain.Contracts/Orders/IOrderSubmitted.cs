@@ -3,8 +3,8 @@ using Sample.Ecommerce.Core.Domain.ValueObjects;
 
 namespace Sample.Ecommerce.Domain.Contracts.Orders;
 
-[EntityName(nameof(IOrderCreated))]
-public interface IOrderCreated
+[EntityName(nameof(IOrderSubmitted))]
+public interface IOrderSubmitted
 {
     public Guid Id { get; set; }
     public Guid IdClient { get; set; }

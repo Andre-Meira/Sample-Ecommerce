@@ -1,7 +1,6 @@
 ﻿using Sample.Ecommerce.Core.Domain.Entity;
 
-namespace Sample.Ecommerce.Order.Core
-    .Products;
+namespace Sample.Ecommerce.Order.Core.Products;
 
 public class Product : Entity, IAggregate
 {

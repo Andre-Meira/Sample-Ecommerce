@@ -1,4 +1,6 @@
-﻿namespace Sample.Ecommerce.Order.Core.Orders.Structs;
+﻿using Sample.Ecommerce.Domain.Contracts.Orders;
+
+namespace Sample.Ecommerce.Order.Core.Orders.Structs;
 
 internal sealed class BankAccountProcessor : OrderStructProcessor
 {
@@ -10,8 +12,8 @@ internal sealed class BankAccountProcessor : OrderStructProcessor
         _processor = processor;
     }
 
-    public override void Process(Order order)
+    public override Task Process(SubmitOrder order)
     {
-        base.Process(order);
+        return base.Process(order);
     }
 }

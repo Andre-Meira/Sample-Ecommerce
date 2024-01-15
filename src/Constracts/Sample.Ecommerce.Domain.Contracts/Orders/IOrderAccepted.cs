@@ -2,8 +2,8 @@
 
 namespace Sample.Ecommerce.Domain.Contracts.Orders;
 
-[EntityName(nameof(IOrderCompleted))]
-public interface IOrderCompleted
+[EntityName(nameof(IOrderAccepted))]
+public interface IOrderAccepted
 {
     public  Guid Id { get; set; }
 }

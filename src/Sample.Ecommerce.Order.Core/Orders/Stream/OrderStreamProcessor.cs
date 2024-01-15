@@ -6,11 +6,11 @@ public interface IOrderProcessorEvents
 : IProcessorEventStream<Order, IOrderStream>
 { }
 
-public sealed class InventorystreamProcessor : IOrderProcessorEvents
+public sealed class OrderStreamProcessor : IOrderProcessorEvents
 {
     private readonly IOrderStreamRepository _streamRepository;
 
-    public InventorystreamProcessor(IOrderStreamRepository streamRespositore)
+    public OrderStreamProcessor(IOrderStreamRepository streamRespositore)
     {
         _streamRepository = streamRespositore;
     }

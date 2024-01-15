@@ -8,22 +8,22 @@ namespace Sample.Ecommerce.Order.Core.Orders.Events;
 internal sealed class OrderCreated : IOrderCreated, IOrderStream
 {
     public OrderCreated(
-        Guid idClient,  
-        Product product,
+        Guid id,
+        Guid idClient,          
+        Guid idProduct,
         Address deliveryAddress, 
         BankAccount bankAccount,         
         decimal quantity, decimal value)
-    {
-        IdClient = idClient;
-        Product = product;
+    {        
+        IdClient = idClient;        
         DeliveryAddress = deliveryAddress;
         BankAccount = bankAccount;
         Amount = quantity;
         Value = value;
 
-        Id = Guid.NewGuid();
+        Id = id;
         Date = DateTime.UtcNow;
-        IdProduct = product.Id;
+        IdProduct = idProduct;
 
         IdCorrelation = Id;        
     }
@@ -39,8 +39,7 @@ internal sealed class OrderCreated : IOrderCreated, IOrderStream
     public BankAccount BankAccount { get ; set ; }
 
     public decimal Amount { get ; set ; }
-    public decimal Value { get ; set ; }
-    public Product Product { get; set ; }    
+    public decimal Value { get ; set ; }    
 
     public void Process(Order order)
     {
@@ -51,6 +50,7 @@ internal sealed class OrderCreated : IOrderCreated, IOrderStream
         order.DeliveryAddress = DeliveryAddress;
         order.BankAccount = BankAccount;
         order.Amount = Amount;
+        order.IdProduct = IdProduct;
         order.Value = Value;        
     }
 }
