@@ -1,6 +1,6 @@
 ﻿namespace Sample.Ecommerce.Core.Domain.ValueObjects;
 
-public record Address
+public record BaseAddress
 {
     public string Street { get; private set; }
     public string Number { get; private set; }
@@ -10,7 +10,7 @@ public record Address
     public string State { get; private set; }
     public string ZipCode { get; private set; }
 
-    public Address(
+    public BaseAddress(
         string street, string number, string complement, 
         string neighborhood, string city, string state, string zipCode)
     {
@@ -24,7 +24,7 @@ public record Address
     }
 
 #pragma warning disable CS8618 // O campo não anulável precisa conter um valor não nulo ao sair do construtor. Considere declará-lo como anulável.
-    protected Address()
+    protected BaseAddress()
 #pragma warning restore CS8618 // O campo não anulável precisa conter um valor não nulo ao sair do construtor. Considere declará-lo como anulável.
     {
 

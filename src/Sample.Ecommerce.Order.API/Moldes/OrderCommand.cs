@@ -10,10 +10,10 @@ public record OrderCommand
     public DateTime Date { get; set; }
     
     [Required]
-    public Address DeliveryAddress { get; set; } = null!;
+    public BaseAddress DeliveryAddress { get; set; } = null!;
 
     [Required]  
-    public BankAccount BankAccount { get; set; } = null!;
+    public BaseBankAccount BankAccount { get; set; } = null!;
 
     public decimal Amount { get; set; }
     public decimal Value { get; set; }

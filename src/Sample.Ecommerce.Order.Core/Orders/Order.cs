@@ -16,8 +16,8 @@ public class Order : IAggregateStream<IOrderStream>
     public DateTime Date { get; set; }
     public StatusOrder Status { get; set; }
 
-    public Address DeliveryAddress { get; set; } = null!;
-    public BankAccount BankAccount { get; set; } = null!;    
+    public BaseAddress DeliveryAddress { get; set; } = null!;
+    public BaseBankAccount BankAccount { get; set; } = null!;    
 
     public decimal Amount { get; set; }  
     public decimal Value { get ; set; } 

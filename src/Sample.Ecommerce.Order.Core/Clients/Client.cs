@@ -6,8 +6,8 @@ namespace Sample.Ecommerce.Order.Core.Clients;
 
 public class Client : Entity, IAggregate
 {
-    private readonly List<ClientAddress> _addresses;
-    private readonly List<ClientBankAccount> _bankAccounts;
+    private readonly List<Address> _addresses;
+    private readonly List<BankAccount> _bankAccounts;
 
     public string Name { get; private set; }    
     public Cpf Cpf { get; private set; }
@@ -19,32 +19,32 @@ public class Client : Entity, IAggregate
         Cpf = new Cpf(cpf);
         Email = new Email(email);
 
-        _addresses = new List<ClientAddress>();
-        _bankAccounts = new List<ClientBankAccount>();   
+        _addresses = new List<Address>();
+        _bankAccounts = new List<BankAccount>();   
     }
 
     #pragma warning disable CS8618 
     protected Client() { }
     #pragma warning restore CS8618 
 
-    public IReadOnlyCollection<ClientAddress> Addresses => _addresses;
-    public IReadOnlyCollection<ClientBankAccount> BankAccounts => _bankAccounts;
+    public IReadOnlyCollection<Address> Addresses => _addresses;
+    public IReadOnlyCollection<BankAccount> BankAccounts => _bankAccounts;
 
-    public void RaiseAddress(Address address)
+    public void RaiseAddress(BaseAddress address)
     {
         if (_addresses.Contains(address) == true)
             throw new DomainException("O enderoço Cadastrado já exite.");
 
-        ClientAddress clientAddress = new ClientAddress(address);
+        Address clientAddress = new Address(address);
         _addresses.Add(clientAddress);
     }
 
-    public void RaiseBankAccount(BankAccount bankAccount)
+    public void RaiseBankAccount(BaseBankAccount bankAccount)
     {
         if (_bankAccounts.Contains(bankAccount) == true)
             throw new DomainException("A conta bancaria já existe.");
 
-        ClientBankAccount clientBankAccount = new ClientBankAccount(bankAccount);
+        BankAccount clientBankAccount = new BankAccount(bankAccount);
         _bankAccounts.Add(clientBankAccount);        
     }
 

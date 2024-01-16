@@ -1,13 +1,13 @@
 ﻿namespace Sample.Ecommerce.Core.Domain.ValueObjects;
 
-public record BankAccount
+public record BaseBankAccount
 {
     public string AccountNumber { get; private set; }
     public string AgencyNumber { get; private set; }
     public string AccountHolderName { get; private set; }
     public string BankName { get; private set; }
 
-    public BankAccount(string accountNumber, string agencyNumber, string accountHolderName, string bankName)
+    public BaseBankAccount(string accountNumber, string agencyNumber, string accountHolderName, string bankName)
     {
         if (string.IsNullOrWhiteSpace(accountNumber))
         {
@@ -36,7 +36,7 @@ public record BankAccount
     }
 
 #pragma warning disable CS8618 
-    protected BankAccount()
+    protected BaseBankAccount()
 #pragma warning restore CS8618
     {
 

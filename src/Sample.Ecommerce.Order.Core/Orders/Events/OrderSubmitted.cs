@@ -11,8 +11,8 @@ internal sealed class OrderSubmitted : IOrderSubmitted, IOrderStream
         Guid id,
         Guid idClient,          
         Guid idProduct,
-        Address deliveryAddress, 
-        BankAccount bankAccount,         
+        BaseAddress deliveryAddress, 
+        BaseBankAccount bankAccount,         
         decimal quantity, decimal value)
     {        
         IdClient = idClient;        
@@ -35,8 +35,8 @@ internal sealed class OrderSubmitted : IOrderSubmitted, IOrderStream
     public DateTime Date { get; set; }    
     public Guid IdClient { get ; set ; }
     
-    public Address DeliveryAddress { get ; set ; }
-    public BankAccount BankAccount { get ; set ; }
+    public BaseAddress DeliveryAddress { get ; set ; }
+    public BaseBankAccount BankAccount { get ; set ; }
 
     public decimal Amount { get ; set ; }
     public decimal Value { get ; set ; }    

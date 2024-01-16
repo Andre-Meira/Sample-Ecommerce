@@ -1,7 +1,6 @@
 ﻿using Sample.Ecommerce.Core.Domain;
 using Sample.Ecommerce.Core.Domain.Enums;
 using Sample.Ecommerce.Order.Core.Inventorys.EventStream;
-using Sample.Ecommerce.Order.Core.Inventorys.Products;
 using Sample.Ecommerce.Order.Core.Products;
 
 namespace Sample.Ecommerce.Order.Core.Inventorys.Events;

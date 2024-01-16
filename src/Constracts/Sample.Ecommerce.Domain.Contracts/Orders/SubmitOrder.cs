@@ -7,7 +7,7 @@ namespace Sample.Ecommerce.Domain.Contracts.Orders;
 public record SubmitOrder : IContract 
 {
     public SubmitOrder(Guid id, Guid idClient, Guid idProduct, 
-        DateTime date, Address deliveryAddress, BankAccount bankAccount, 
+        DateTime date, BaseAddress deliveryAddress, BaseBankAccount bankAccount, 
         decimal amount, decimal value)
     {
         Id = id;
@@ -25,8 +25,8 @@ public record SubmitOrder : IContract
     public Guid IdProduct { get; set; }
     public DateTime Date { get; set; }
 
-    public Address DeliveryAddress { get; set; }
-    public BankAccount BankAccount { get; set; }
+    public BaseAddress DeliveryAddress { get; set; }
+    public BaseBankAccount BankAccount { get; set; }
 
     public decimal Amount { get; set; }
     public decimal Value { get; set; }
