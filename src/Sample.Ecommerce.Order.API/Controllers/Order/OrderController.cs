@@ -21,7 +21,7 @@ public class OrderController : ControllerBase
     [HttpPost]
     [ProducesResponseType(typeof(OrderResponse), StatusCodes.Status200OK)]
     public async Task<OrderResponse> CreateOrder([FromBody,Required] OrderCommand order, 
-        CancellationToken cancellation)
+        CancellationToken cancellation = default)
     {
         Guid orderId = Guid.NewGuid();
         
@@ -31,6 +31,22 @@ public class OrderController : ControllerBase
         ISendEndpoint sendEndpoint = await _endpointProvider.GetSendEndpoint(submit.GetExchange());
         await sendEndpoint.Send(submit).ConfigureAwait(false);
 
-        return new OrderResponse(orderId, "Ordem criado e em processo.");
+        return new OrderResponse(orderId, "Ordem criada e em processo.");
     }
+
+    [HttpPut("Accept/{Id}")]
+    [ProducesResponseType(typeof(OrderResponse), StatusCodes.Status200OK)]
+    public Task<OrderResponse> AcceptOrder(Guid Id, 
+        CancellationToken cancellationToken = default)
+    {
+        return Task.FromResult(new OrderResponse(Id, "Ordem aprovada."));
+    }
+
+    [HttpPut("Refuse/{Id}")]
+    [ProducesResponseType(typeof(OrderResponse), StatusCodes.Status200OK)]
+    public Task<OrderResponse> RefuseOrder(Guid Id,
+        CancellationToken cancellationToken = default)
+    {
+        return Task.FromResult(new OrderResponse(Id, "Ordem reprovada."));
+    }    
 }

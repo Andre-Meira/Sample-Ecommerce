@@ -5,9 +5,9 @@ using Sample.Ecommerce.Order.Core.Products;
 
 namespace Sample.Ecommerce.Order.Core.Orders.Events;
 
-internal sealed class OrderCreated : IOrderCreated, IOrderStream
+internal sealed class OrderSubmitted : IOrderSubmitted, IOrderStream
 {
-    public OrderCreated(
+    public OrderSubmitted(
         Guid id,
         Guid idClient,          
         Guid idProduct,
@@ -43,7 +43,7 @@ internal sealed class OrderCreated : IOrderCreated, IOrderStream
 
     public void Process(Order order)
     {
-        order.Status = StatusOrder.Process;
+        order.Status = StatusOrder.Submit;
         order.Date = Date;
         order.Id = Id;
         order.IdClient = IdClient;

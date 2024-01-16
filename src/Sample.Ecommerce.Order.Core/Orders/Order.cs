@@ -5,7 +5,7 @@ using Sample.Ecommerce.Order.Core.Products;
 
 namespace Sample.Ecommerce.Order.Core.Orders;
 
-public enum StatusOrder { Process, Complet, Error, Reverse }
+public enum StatusOrder { Submit, Accept, Refuse, FulfilmentComplet, FulfilmentFault}
 
 public class Order : IAggregateStream<IOrderStream>
 {

@@ -7,7 +7,7 @@ using Sample.Ecommerce.Order.Core.Orders.Structs;
 
 namespace Sample.Ecommerce.Order.Core.Orders.Handlers;
 
-internal sealed class SubmitOrderConsumer : IConsumer<SubmitOrder>, IConsumer<Fault<SubmitOrder>>
+internal sealed class SubmitOrderConsumer : IConsumer<SubmitOrder>    
 {
     private readonly ILogger<SubmitOrderConsumer> _logger;
     private readonly IOrderStructProcessor _orderStructProcessor;
@@ -27,7 +27,7 @@ internal sealed class SubmitOrderConsumer : IConsumer<SubmitOrder>, IConsumer<Fa
 
         await _orderStructProcessor.Process(submitOrder);
 
-        OrderCreated orderCreated = new OrderCreated(submitOrder.Id,submitOrder.IdClient, 
+        OrderSubmitted orderCreated = new OrderSubmitted(submitOrder.Id,submitOrder.IdClient, 
             submitOrder.IdProduct, submitOrder.DeliveryAddress, submitOrder.BankAccount,
             submitOrder.Amount, submitOrder.Value);
 
@@ -35,18 +35,7 @@ internal sealed class SubmitOrderConsumer : IConsumer<SubmitOrder>, IConsumer<Fa
         _logger.LogInformation("Order {0} criado", submitOrder.Id);
 
         await context.Publish<IOrderSubmitted>(orderCreated);
-    }
-
-    public async Task Consume(ConsumeContext<Fault<SubmitOrder>> context)
-    {
-        var message = context.Message.Message;
-
-        await context.Publish<IOrderFailed>(new
-        { 
-            Id = message.IdProduct, 
-            Message = "Falha ao processar a ordem!"
-        });
-    }
+    }    
 }
 
 

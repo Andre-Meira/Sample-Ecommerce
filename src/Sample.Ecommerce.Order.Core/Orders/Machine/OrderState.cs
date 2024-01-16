@@ -9,7 +9,7 @@ internal sealed class OrderState : SagaStateMachineInstance, ISagaVersion
     public Guid CorrelationId { get ; set ; }
 
     public string CurrentState { get; set; } = null!;
-    public string? FaultReason { get; set; } 
+    public string? Message { get; set; } 
 
     public Guid IdClient { get; set; }
     public Guid IdProduct { get; set; }    
