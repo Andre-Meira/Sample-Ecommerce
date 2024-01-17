@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Orders\Machine\Activity\" />
     <Folder Include="Products\" />
   </ItemGroup>
 

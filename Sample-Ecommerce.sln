@@ -9,21 +9,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{6F7E1C81
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kernel", "Kernel", "{0DD1045F-7D2C-4364-A33F-38853135DD71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Ecommerce.Order.API", "src\Sample.Ecommerce.Order.API\Sample.Ecommerce.Order.API.csproj", "{3E652F93-4FE8-4EBA-842B-06B3160AD8C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Ecommerce.Order.API", "src\Sample.Ecommerce.Order.API\Sample.Ecommerce.Order.API.csproj", "{3E652F93-4FE8-4EBA-842B-06B3160AD8C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Ecommerce.Order.Core", "src\Sample.Ecommerce.Order.Core\Sample.Ecommerce.Order.Core.csproj", "{7AB8468A-76D2-4799-9BC1-43EDC7BFC6CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Ecommerce.Order.Core", "src\Sample.Ecommerce.Order.Core\Sample.Ecommerce.Order.Core.csproj", "{7AB8468A-76D2-4799-9BC1-43EDC7BFC6CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Ecommerce.Order.Infra", "src\Sample.Ecommerce.Order.Infra\Sample.Ecommerce.Order.Infra.csproj", "{55072D99-23BF-420C-B11A-6F6F115E9263}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Ecommerce.Order.Infra", "src\Sample.Ecommerce.Order.Infra\Sample.Ecommerce.Order.Infra.csproj", "{55072D99-23BF-420C-B11A-6F6F115E9263}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Ecommerce.Core.Domain", "src\Kernel\Sample.Ecommerce.Core.Domain\Sample.Ecommerce.Core.Domain.csproj", "{27CC133E-79EC-4C40-B48F-886E18CC66D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Ecommerce.Core.Domain", "src\Kernel\Sample.Ecommerce.Core.Domain\Sample.Ecommerce.Core.Domain.csproj", "{27CC133E-79EC-4C40-B48F-886E18CC66D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Ecommerce.Core.API", "src\Kernel\Sample.Ecommerce.Core.API\Sample.Ecommerce.Core.API.csproj", "{9C96060F-A296-43DD-90B8-2135683CDD1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Ecommerce.Core.API", "src\Kernel\Sample.Ecommerce.Core.API\Sample.Ecommerce.Core.API.csproj", "{9C96060F-A296-43DD-90B8-2135683CDD1D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{4B007537-680E-4926-935B-6856E9B7415D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Ecommerce.Domain.Contracts", "src\Constracts\Sample.Ecommerce.Domain.Contracts\Sample.Ecommerce.Domain.Contracts.csproj", "{2D0CC2E5-9B00-4658-AA21-F59B537007FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Ecommerce.Domain.Contracts", "src\Constracts\Sample.Ecommerce.Domain.Contracts\Sample.Ecommerce.Domain.Contracts.csproj", "{2D0CC2E5-9B00-4658-AA21-F59B537007FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Ecommerce.Order.Core.Test", "tests\Sample.Ecommerce.Order.Core.Test\Sample.Ecommerce.Order.Core.Test.csproj", "{FF195A03-89EC-4BCB-BD04-E563B5FC9666}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Ecommerce.Order.Core.Test", "tests\Sample.Ecommerce.Order.Core.Test\Sample.Ecommerce.Order.Core.Test.csproj", "{FF195A03-89EC-4BCB-BD04-E563B5FC9666}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{D1BAE0AB-8286-439D-A9A4-CF0A7943155F}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
