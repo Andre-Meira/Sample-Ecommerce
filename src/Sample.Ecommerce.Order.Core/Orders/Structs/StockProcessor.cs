@@ -8,10 +8,10 @@ namespace Sample.Ecommerce.Order.Core.Orders.Structs;
 internal sealed class StockProcessor : OrderStructProcessor
 {
     private readonly IOrderStructProcessor _processor;
-    private readonly IStockProcessorEvents _stock;        
+    private readonly IStockRepository _stock;        
 
     public StockProcessor(IOrderStructProcessor processor, 
-        IStockProcessorEvents stock) : base(processor)
+        IStockRepository stock) : base(processor)
     {
         _processor = processor;
         _stock = stock;

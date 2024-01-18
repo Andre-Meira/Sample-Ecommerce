@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sample.Ecommerce.Order.Core.Orders.Machine.Activity
+namespace Sample.Ecommerce.Order.Core.Orders.Machine.Activity;
+
+internal class PaymentActivity
 {
-    internal class PaymentActivity
-    {
-    }
 }

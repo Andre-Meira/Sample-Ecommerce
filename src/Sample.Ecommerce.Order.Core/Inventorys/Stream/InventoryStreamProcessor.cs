@@ -2,13 +2,13 @@
 
 namespace Sample.Ecommerce.Order.Core.Inventorys.EventStream;
 
-public interface IStockProcessorEvents
+public interface IStockRepository
 : IProcessorEventStream<Inventory, IInventoryStream>
 {
     public Task<Inventory> GetByIdProduct(Guid Id);
 }
 
-public sealed class InventoryStreamProcessor : IStockProcessorEvents
+public sealed class InventoryStreamProcessor : IStockRepository
 {
     private readonly IInventoryStreamRepository _streamRepositore;
 
