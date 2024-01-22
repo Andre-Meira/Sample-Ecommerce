@@ -13,6 +13,6 @@ public interface IOrderSubmitted
 
     public BaseAddress DeliveryAddress { get; set; } 
     public BaseBankAccount BankAccount { get; set; }    
-    public decimal Amount { get; set; }
+    public int Amount { get; set; }
     public decimal Value { get; set; }
 }

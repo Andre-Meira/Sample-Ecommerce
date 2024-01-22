@@ -15,6 +15,6 @@ public record OrderCommand
     [Required]  
     public BaseBankAccount BankAccount { get; set; } = null!;
 
-    public decimal Amount { get; set; }
+    public int Amount { get; set; }
     public decimal Value { get; set; }
 }

@@ -1,7 +1,6 @@
 ﻿using Sample.Ecommerce.Core.Domain.ValueObjects;
 using Sample.Ecommerce.Domain.Contracts.Orders;
 using Sample.Ecommerce.Order.Core.Orders.EventStream;
-using Sample.Ecommerce.Order.Core.Products;
 
 namespace Sample.Ecommerce.Order.Core.Orders.Events;
 
@@ -13,7 +12,7 @@ internal sealed class OrderSubmitted : IOrderSubmitted, IOrderStream
         Guid idProduct,
         BaseAddress deliveryAddress, 
         BaseBankAccount bankAccount,         
-        decimal quantity, decimal value)
+        int quantity, decimal value)
     {        
         IdClient = idClient;        
         DeliveryAddress = deliveryAddress;
@@ -38,7 +37,7 @@ internal sealed class OrderSubmitted : IOrderSubmitted, IOrderStream
     public BaseAddress DeliveryAddress { get ; set ; }
     public BaseBankAccount BankAccount { get ; set ; }
 
-    public decimal Amount { get ; set ; }
+    public int Amount { get ; set ; }
     public decimal Value { get ; set ; }    
 
     public void Process(Order order)

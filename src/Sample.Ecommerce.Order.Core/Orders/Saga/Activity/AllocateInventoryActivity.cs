@@ -7,8 +7,9 @@ namespace Sample.Ecommerce.Order.Core.Orders.Machine.Activity;
 
 internal sealed class AllocateInventoryActivity : IActivity<AllocateInventoryArguments, IAllocateInventoryResponse>
 {
-    public static readonly Uri Endpoint = new Uri("exchange:bank-process_execute");
-    
+    public static readonly Uri Endpoint = new Uri("exchange:allocate-inventory_execute");
+    public const string Name = nameof(AllocateInventoryActivity);   
+
     private readonly ILogger<AllocateInventoryActivity> _logger;
     private readonly IStockRepository _stockRepository;    
 

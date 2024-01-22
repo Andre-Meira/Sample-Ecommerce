@@ -17,6 +17,6 @@ internal sealed class OrderState : SagaStateMachineInstance, ISagaVersion
     public BaseAddress DeliveryAddress { get; set; } = null!;
     public BaseBankAccount BankAccount { get; set; } = null!;    
 
-    public decimal Amount { get; set; }
+    public int Amount { get; set; }
     public decimal Value { get; set; }
 }

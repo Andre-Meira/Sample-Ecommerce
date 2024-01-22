@@ -6,9 +6,11 @@ namespace Sample.Ecommerce.Domain.Contracts.Orders;
 [EntityName(nameof(SubmitOrder))]
 public record FulfillOrder : IContract
 {
-    public FulfillOrder(Guid id, BaseAddress deliveryAddress, BaseBankAccount bankAccount, decimal amount, decimal value)
+    public FulfillOrder(Guid id, Guid idProduct, BaseAddress deliveryAddress, 
+        BaseBankAccount bankAccount, int amount, decimal value)
     {
         Id = id;
+        IdProduct = idProduct;
         DeliveryAddress = deliveryAddress;
         BankAccount = bankAccount;
         Amount = amount;
@@ -17,9 +19,11 @@ public record FulfillOrder : IContract
 
     public Guid Id { get; set; }
 
+    public Guid IdProduct { get; set; }
+
     public BaseAddress DeliveryAddress { get; set; }
     public BaseBankAccount BankAccount { get; set; }
 
-    public decimal Amount { get; set; }
+    public int Amount { get; set; }
     public decimal Value { get; set; }
 }

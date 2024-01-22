@@ -8,7 +8,7 @@ public record SubmitOrder : IContract
 {
     public SubmitOrder(Guid id, Guid idClient, Guid idProduct, 
         DateTime date, BaseAddress deliveryAddress, BaseBankAccount bankAccount, 
-        decimal amount, decimal value)
+        int amount, decimal value)
     {
         Id = id;
         IdClient = idClient;
@@ -28,6 +28,6 @@ public record SubmitOrder : IContract
     public BaseAddress DeliveryAddress { get; set; }
     public BaseBankAccount BankAccount { get; set; }
 
-    public decimal Amount { get; set; }
+    public int Amount { get; set; }
     public decimal Value { get; set; }
 }
