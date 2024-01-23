@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Marten" Version="7.0.0-alpha.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Sample.Ecommerce.Order.Core\Sample.Ecommerce.Order.Core.csproj" />
   </ItemGroup>
 

@@ -13,7 +13,7 @@ public class EventStream
     public static EventStream Initialized(IEventData @event) 
         => new EventStream(@event);
 
-    public Guid IdCorrelation  { get; init; }
-    public string Name { get; init; }   
-    public DateTime Created { get; init; }  
+    public virtual Guid IdCorrelation  { get; init; }
+    public virtual string Name { get; init; }   
+    public virtual DateTime Created { get; init; }  
 }
