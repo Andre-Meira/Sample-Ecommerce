@@ -19,7 +19,7 @@ internal sealed class StockProcessor : OrderStructProcessor
 
     public override async Task Process(SubmitOrder order)
     {
-        Inventory inventory = await _stock.GetByIdProduct(order.IdProduct);
+        Inventory inventory = await _stock.Process(order.IdProduct);
 
         if (inventory.Amount < order.Amount)
             throw new DomainException("Não existe essa quantidade em estoque.");

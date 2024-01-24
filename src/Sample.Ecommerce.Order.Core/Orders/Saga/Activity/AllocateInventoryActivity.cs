@@ -23,7 +23,7 @@ internal sealed class AllocateInventoryActivity : IActivity<AllocateInventoryArg
 
     public async Task<CompensationResult> Compensate(CompensateContext<IAllocateInventoryResponse> context)
     {       
-        var stock = await _stockRepository.GetByIdProduct(context.Log.IdProduct);
+        var stock = await _stockRepository.Process(context.Log.IdProduct);
 
         ProductSellReversed productSelled = new ProductSellReversed(stock.Id, context.Log.Amount);
         stock.When(productSelled);
@@ -38,7 +38,7 @@ internal sealed class AllocateInventoryActivity : IActivity<AllocateInventoryArg
 
     public async Task<ExecutionResult> Execute(ExecuteContext<AllocateInventoryArguments> context)
     {
-        var stock = await _stockRepository.GetByIdProduct(context.Arguments.IdProduct);
+        var stock = await _stockRepository.Process(context.Arguments.IdProduct);
 
         ProductSelled productSelled = new ProductSelled(stock.Id, context.Arguments.Amount);
         stock.When(productSelled);

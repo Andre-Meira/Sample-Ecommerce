@@ -23,11 +23,10 @@ internal sealed class OrderStreamRepository : IOrderStreamRepository
 
         if (stream is null)
         {
-            _documentSession.Events.StartStream<Core.Orders.Order>(@event.IdCorrelation, @event);
-            return _documentSession.SaveChangesAsync();
+            _documentSession.Events.StartStream<Core.Orders.Order>(@event.IdCorrelation);            
         }
 
-        _documentSession.Events.Append(stream.Id, @event);
+        _documentSession.Events.Append(@event.IdCorrelation, @event);
         return _documentSession.SaveChangesAsync();
     }
 }

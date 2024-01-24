@@ -2,9 +2,7 @@
 
 public interface IInventoryStreamRepository
 {
-    public IEnumerable<IInventoryStream> GetEvents(Guid idInventory);
-
-    public IEnumerable<IInventoryStream> GetEventsByFilter(Action<InventoryFilter> action);
+    public IEnumerable<IInventoryStream> GetEvents(Guid idInventory);    
 
     public Task IncressEvent(IInventoryStream @event);
 }

@@ -7,14 +7,12 @@ namespace Sample.Ecommerce.Order.Core.Inventorys.Events;
 
 internal sealed record InventoryCreated : IInventoryStream
 {
-    public InventoryCreated(Product product,
-        int amount, decimal value)
+    public InventoryCreated(Product product,int amount)
     {                
-        Amount = amount;
-        Value = value;         
+        Amount = amount;             
         Product = product;
 
-        IdCorrelation = Guid.NewGuid();
+        IdCorrelation = Product.Id;
         Status = Status.Enable;
         Created = DateTime.UtcNow;
     }
@@ -34,8 +32,7 @@ internal sealed record InventoryCreated : IInventoryStream
 
         stock.Status = Status.Enable;
         stock.Created = DateTime.UtcNow;        
-        stock.Amount = Amount;
-        stock.Value = Value;
+        stock.Amount = Amount;        
         stock.Product = Product;
 
         stock.Id = IdCorrelation;
