@@ -2,8 +2,8 @@
 using Sample.Ecommerce.Domain.Contracts.Orders.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Sample.Ecommerce.Domain.Contracts.Orders;
-using Sample.Ecommerce.Order.API.Moldes;
 using System.ComponentModel.DataAnnotations;
+using Sample.Ecommerce.Order.API.Moldes.Orders;
 
 namespace Sample.Ecommerce.Order.API.Controllers.Order;
 

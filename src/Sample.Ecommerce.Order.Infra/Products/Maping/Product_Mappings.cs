@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Sample.Ecommerce.Order.Core.Products;
 
-namespace Sample.Ecommerce.Order.Infra.Products;
+namespace Sample.Ecommerce.Order.Infra.Products.Maping;
 
 internal class Product_Mappings : IEntityTypeConfiguration<Product>
 {
