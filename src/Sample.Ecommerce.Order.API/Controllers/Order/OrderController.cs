@@ -42,11 +42,21 @@ public class OrderController : ControllerBase
         return Task.FromResult(new OrderResponse(Id, "Ordem aprovada."));
     }
 
-    [HttpPut("Refuse/{Id}")]
+    [HttpDelete("Refuse/{Id}")]
     [ProducesResponseType(typeof(OrderResponse), StatusCodes.Status200OK)]
     public Task<OrderResponse> RefuseOrder(Guid Id,
         CancellationToken cancellationToken = default)
     {
         return Task.FromResult(new OrderResponse(Id, "Ordem reprovada."));
-    }    
+    }
+
+    [HttpGet("Status/{Id}")]
+    [ProducesResponseType(typeof(OrderResponse<OrderStatus>), StatusCodes.Status200OK)]
+    public Task<OrderResponse<OrderStatus>> StatusOrder(Guid id, 
+        CancellationToken cancellationToken = default)
+    {
+        var status = new OrderStatus("Em andamento.");
+        return Task.FromResult(new OrderResponse<OrderStatus>(id, status));
+    }
+
 }
