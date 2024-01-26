@@ -21,7 +21,6 @@ public class ProductController : ControllerBase
         [FromBody,Required] ProductCommand command,
         CancellationToken cancellation = default)
     {
-
         var product = new Product(command.Name, command.Price, command.Description);
 
         _productRepository.Add(product);

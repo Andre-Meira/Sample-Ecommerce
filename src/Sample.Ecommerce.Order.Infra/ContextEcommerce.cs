@@ -45,6 +45,6 @@ internal class ContextEcommerce : DbContext, IUnitOfWork
 
     public Task SaveChangesEntity(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return SaveChangesAsync(cancellationToken);
     }
 }

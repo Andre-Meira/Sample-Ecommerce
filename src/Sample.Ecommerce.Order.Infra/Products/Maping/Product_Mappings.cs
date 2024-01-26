@@ -9,7 +9,7 @@ internal class Product_Mappings : IEntityTypeConfiguration<Product>
     public void Configure(EntityTypeBuilder<Product> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.ToTable("me_produts");
+        builder.ToTable("me_products");
 
         builder.Property(x => x.Id).HasColumnName("id").IsRequired();
         builder.Property(x => x.Name).HasColumnName("name").IsRequired();
