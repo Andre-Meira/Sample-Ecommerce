@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Constracts\Sample.Ecommerce.Domain.Contracts\Sample.Ecommerce.Domain.Contracts.csproj" />
+    <ProjectReference Include="..\Kernel\Sample.Ecommerce.Core.API\Sample.Ecommerce.Core.API.csproj" />
     <ProjectReference Include="..\Sample.Ecommerce.Order.Core\Sample.Ecommerce.Order.Core.csproj" />
     <ProjectReference Include="..\Sample.Ecommerce.Order.Infra\Sample.Ecommerce.Order.Infra.csproj" />
   </ItemGroup>  

@@ -6,9 +6,8 @@ using OpenTelemetry.Exporter;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using System.Diagnostics;
-using System.Net.Http;
 
-namespace Domain.Core.Observability;
+namespace Sample.Ecommerce.Core.API.Observability;
 
 public static class TraceConfiguration
 {

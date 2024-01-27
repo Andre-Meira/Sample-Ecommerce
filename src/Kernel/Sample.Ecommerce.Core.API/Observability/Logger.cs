@@ -8,9 +8,8 @@ using Serilog.Core;
 using Serilog.Events;
 using Serilog.Exceptions;
 using System.Diagnostics;
-using System.Reflection;
 
-namespace Domain.Core.Observability;
+namespace Sample.Ecommerce.Core.API.Observability;
 
 public static class LoggerConfiguration
 {
