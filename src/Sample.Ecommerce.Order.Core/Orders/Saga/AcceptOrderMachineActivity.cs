@@ -23,8 +23,8 @@ internal sealed class AcceptOrderMachineActivity : IStateMachineActivity<OrderSt
         _logerr.LogInformation("Process {0} id:{1}", nameof(FulfillOrder), context.CorrelationId);
 
         FulfillOrder fulfillOrder = new FulfillOrder(context.Saga.CorrelationId, 
-            context.Saga.IdProduct, context.Saga.DeliveryAddress,
-            context.Saga.BankAccount, context.Saga.Amount, context.Saga.Value);
+            context.Saga.Product, context.Saga.DeliveryAddress,
+            context.Saga.BankAccount, context.Saga.Amount);
 
         ISendEndpoint sendEndpoint = await context.GetSendEndpoint(fulfillOrder.GetExchange());        
         await sendEndpoint.Send<FulfillOrder>(fulfillOrder);

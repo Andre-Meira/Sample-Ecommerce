@@ -1,4 +1,5 @@
-﻿using Sample.Ecommerce.Core.Domain.Stream;
+﻿using Sample.Ecommerce.Core.Domain;
+using Sample.Ecommerce.Core.Domain.Stream;
 
 namespace Sample.Ecommerce.Order.Core.Inventorys.EventStream;
 
@@ -18,7 +19,7 @@ public sealed class InventoryStreamProcessor : IStockRepository
         return _streamRepositore.GetEvents(Id);
     }
 
-    public async Task Include(IInventoryStream @event)
+    public async Task Include(IInventoryStream @event, CancellationToken cancellationToken = default)
     {
         Inventory stream = await Process(@event.IdCorrelation);
         stream.When(@event);
@@ -26,9 +27,13 @@ public sealed class InventoryStreamProcessor : IStockRepository
         await _streamRepositore.IncressEvent(@event).ConfigureAwait(false);
     }
 
-    public Task<Inventory> Process(Guid Id)
+    public Task<Inventory> Process(Guid Id, CancellationToken cancellationToken = default)
     {
         IEnumerable<IInventoryStream> events = GetEvents(Id);
+
+        if (events.Count() == 0)
+            throw new DomainException("Inventario não existe.");
+
         Inventory paymentEvent = new Inventory();
 
         foreach (IInventoryStream @event in events) paymentEvent.When(@event);

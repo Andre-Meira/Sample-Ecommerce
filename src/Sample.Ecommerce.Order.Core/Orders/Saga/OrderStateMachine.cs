@@ -28,10 +28,9 @@ internal sealed class OrderStateMachine : MassTransitStateMachine<OrderState>
                 .Then(context =>
                 {
                     context.Saga.CorrelationId = context.Message.Id;
-                    context.Saga.IdProduct = context.Message.IdProduct;
+                    context.Saga.Product = context.Message.Product;
                     context.Saga.IdClient = context.Message.IdClient;
-                    context.Saga.Amount = context.Message.Amount;
-                    context.Saga.Value = context.Message.Value;
+                    context.Saga.Amount = context.Message.Amount;                    
                     context.Saga.BankAccount = context.Message.BankAccount;
                     context.Saga.DeliveryAddress = context.Message.DeliveryAddress;                                        
                 })

@@ -26,7 +26,7 @@ public static class TraceConfiguration
 
                tracing.AddSource("MassTransit");
 
-               string endpointOtlp = configure["EndpointOtlp"]!;
+               string? endpointOtlp = configure["EndpointOtlp"];
 
                tracing.AddAspNetCoreInstrumentation(asp =>
                {
@@ -39,12 +39,14 @@ public static class TraceConfiguration
 
                tracing.AddHttpClientInstrumentation();
 
-
-               tracing.AddOtlpExporter(e =>
+               if (endpointOtlp is not null)
                {
-                   e.Endpoint = new Uri(endpointOtlp);
-                   e.Protocol = OtlpExportProtocol.Grpc;
-               });
+                   tracing.AddOtlpExporter(e =>
+                   {
+                       e.Endpoint = new Uri(endpointOtlp);
+                       e.Protocol = OtlpExportProtocol.Grpc;
+                   });
+               }               
 
 
                tracing.SetResourceBuilder(resourceBuilder);

@@ -1,6 +1,7 @@
 ﻿using Sample.Ecommerce.Core.Domain.ValueObjects;
 using Sample.Ecommerce.Domain.Contracts.Orders;
 using Sample.Ecommerce.Order.Core.Orders.EventStream;
+using Sample.Ecommerce.Order.Core.Products;
 
 namespace Sample.Ecommerce.Order.Core.Orders.Events;
 
@@ -9,36 +10,35 @@ internal sealed class OrderSubmitted : IOrderSubmitted, IOrderStream
     public OrderSubmitted(
         Guid id,
         Guid idClient,          
-        Guid idProduct,
+        BaseProduct product,
         BaseAddress deliveryAddress, 
         BaseBankAccount bankAccount,         
-        int quantity, decimal value)
+        int quantity)
     {        
         IdClient = idClient;        
         DeliveryAddress = deliveryAddress;
         BankAccount = bankAccount;
-        Amount = quantity;
-        Value = value;
+        Amount = quantity;        
 
         Id = id;
-        Date = DateTime.UtcNow;
-        IdProduct = idProduct;
+        Date = DateTime.UtcNow;        
+        Product = product;
 
         IdCorrelation = Id;        
     }
 
-    public Guid Id { get ; set ; }
+    public Guid Id { get ; init; }
     public Guid IdCorrelation { get; init; }
-    public Guid IdProduct { get; set ; }
+    public Guid IdProduct { get; init; }
 
-    public DateTime Date { get; set; }    
-    public Guid IdClient { get ; set ; }
-    
-    public BaseAddress DeliveryAddress { get ; set ; }
-    public BaseBankAccount BankAccount { get ; set ; }
+    public DateTime Date { get; init; }    
+    public Guid IdClient { get ; init; }       
 
-    public int Amount { get ; set ; }
-    public decimal Value { get ; set ; }    
+    public BaseProduct Product { get; init; }
+    public BaseAddress DeliveryAddress { get ; init ; }
+    public BaseBankAccount BankAccount { get ; init ; }
+
+    public int Amount { get ; init; }  
 
     public void Process(Order order)
     {
@@ -48,8 +48,7 @@ internal sealed class OrderSubmitted : IOrderSubmitted, IOrderStream
         order.IdClient = IdClient;
         order.DeliveryAddress = DeliveryAddress;
         order.BankAccount = BankAccount;
-        order.Amount = Amount;
-        order.IdProduct = IdProduct;
-        order.Value = Value;        
+        order.Amount = Amount; 
+        order.Product = Product;
     }
 }

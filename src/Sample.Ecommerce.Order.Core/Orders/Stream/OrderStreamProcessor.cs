@@ -20,15 +20,15 @@ public sealed class OrderStreamProcessor : IOrderProcessorEvents
         return _streamRepository.GetEvents(Id);
     }
 
-    public async Task Include(IOrderStream @event)
+    public async Task Include(IOrderStream @event, CancellationToken cancellationToken = default)
     {
-        Order stream = await Process(@event.IdCorrelation);
+        Order stream = await Process(@event.IdCorrelation, cancellationToken);
         stream.When(@event);
 
         await _streamRepository.IncressEvent(@event).ConfigureAwait(false);
     }
 
-    public Task<Order> Process(Guid Id)
+    public Task<Order> Process(Guid Id, CancellationToken cancellationToken = default)
     {
         IEnumerable<IOrderStream> events = GetEvents(Id);
         Order paymentEvent = new Order();

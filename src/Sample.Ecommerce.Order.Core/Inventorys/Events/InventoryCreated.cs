@@ -5,7 +5,7 @@ using Sample.Ecommerce.Order.Core.Products;
 
 namespace Sample.Ecommerce.Order.Core.Inventorys.Events;
 
-internal sealed record InventoryCreated : IInventoryStream
+public sealed record InventoryCreated : IInventoryStream
 {
     public InventoryCreated(Product product,int amount)
     {                

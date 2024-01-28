@@ -24,6 +24,6 @@ internal sealed class StockProcessor : OrderStructProcessor
         if (inventory.Amount < order.Amount)
             throw new DomainException("Não existe essa quantidade em estoque.");
 
-        await _processor.Process(order).ConfigureAwait(false);
+        await _processor.Process(order);
     }
 }

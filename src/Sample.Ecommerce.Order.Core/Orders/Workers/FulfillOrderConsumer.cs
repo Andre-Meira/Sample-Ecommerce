@@ -12,7 +12,7 @@ internal sealed class FulfillOrderConsumer : IConsumer<FulfillOrder>
         RoutingSlipBuilder routing = new RoutingSlipBuilder(Guid.NewGuid());
 
         var inventoryArguments = new AllocateInventoryArguments(context.Message.Id,
-            context.Message.IdProduct, context.Message.Amount);
+            context.Message.Product.Id, context.Message.Amount);
 
         routing.AddActivity(AllocateInventoryActivity.Name, AllocateInventoryActivity.Endpoint, inventoryArguments);
 
@@ -43,5 +43,21 @@ internal sealed class FulfillOrderConsumer : IConsumer<FulfillOrder>
     {
         await context.Publish<IOrderFulfillmentCompleted>(new {context.Message.Id})
             .ConfigureAwait(false);
+    }
+}
+
+internal sealed class FulfillOrderConsumerDefinition : ConsumerDefinition<FulfillOrderConsumer>
+{
+    public FulfillOrderConsumerDefinition()
+    {
+        EndpointName = "queue-order";
+    }
+
+    protected override void ConfigureConsumer(
+        IReceiveEndpointConfigurator endpointConfigurator,
+        IConsumerConfigurator<FulfillOrderConsumer> consumerConfigurator,
+        IRegistrationContext context)
+    {
+        base.ConfigureConsumer(endpointConfigurator, consumerConfigurator, context);
     }
 }

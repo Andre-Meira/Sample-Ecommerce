@@ -2,7 +2,7 @@
 
 namespace Sample.Ecommerce.Order.Core.Inventorys.Events;
 
-internal class ProductSellReversed : IInventoryStream
+public class ProductSellReversed : IInventoryStream
 {
     public Guid IdCorrelation { get; init; }
     public int Amount { get; init; }

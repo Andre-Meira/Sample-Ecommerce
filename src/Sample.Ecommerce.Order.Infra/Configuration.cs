@@ -2,7 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Sample.Ecommerce.Order.Core.Inventorys.EventStream;
+using Sample.Ecommerce.Order.Core.Orders.EventStream;
 using Sample.Ecommerce.Order.Core.Products;
+using Sample.Ecommerce.Order.Infra.Inventory;
+using Sample.Ecommerce.Order.Infra.Orders;
 using Sample.Ecommerce.Order.Infra.Products;
 
 namespace Sample.Ecommerce.Order.Infra;
@@ -17,8 +21,9 @@ public static class Configuration
         services.AddMarten(options =>
         {
             options.Connection(connectionString);
-            options.Events.StreamIdentity = Marten.Events.StreamIdentity.AsGuid;
-        });
+            options.Events.StreamIdentity = Marten.Events.StreamIdentity.AsGuid;           
+
+        }).UseLightweightSessions();
 
         services.AddDbContext<ContextEcommerce>((sp, options) =>
         {                        
@@ -27,6 +32,8 @@ public static class Configuration
         }, ServiceLifetime.Transient);
 
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IOrderStreamRepository, OrderStreamRepository>();
+        services.AddScoped<IInventoryStreamRepository, InventoryStreamRepository>();
 
         return services;
     }

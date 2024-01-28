@@ -28,7 +28,9 @@ internal sealed class InventoryStreamRepository : IInventoryStreamRepository
 
         if (stream is null)
         {
-            _documentSession.Events.StartStream<Core.Inventorys.Inventory>(@event.IdCorrelation);            
+            _documentSession.Events.StartStream<Core.Inventorys.Inventory>(@event.IdCorrelation, @event);
+            await _documentSession.SaveChangesAsync().ConfigureAwait(false);
+            return;
         }
 
         _documentSession.Events.Append(@event.IdCorrelation, @event);
