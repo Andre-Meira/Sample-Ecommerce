@@ -5,5 +5,5 @@ namespace Sample.Ecommerce.Domain.Contracts.Orders;
 [EntityName(nameof(IOrderAccepted))]
 public interface IOrderAccepted
 {
-    public  Guid Id { get; set; }
+    public  Guid Id { get; init; }
 }

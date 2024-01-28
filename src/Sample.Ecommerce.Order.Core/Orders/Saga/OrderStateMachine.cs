@@ -41,7 +41,7 @@ internal sealed class OrderStateMachine : MassTransitStateMachine<OrderState>
                 .Then(context => context.Saga.Message = context.Message.Message)
                 .TransitionTo(Refused),
             When(OrderAccepted)
-                .Activity(e => e.OfType<AcceptOrderMachineActivity>())
+                .Activity(e => e.OfType<AcceptOrderMachineActivity>())                
                 .TransitionTo(Accepted));
 
         During(Accepted,
